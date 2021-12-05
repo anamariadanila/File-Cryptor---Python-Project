@@ -1,6 +1,6 @@
 import sys
 
-from FileCryptor import FileCryptor
+import FileCryptor as fc
 
 
 def get_arguments():
@@ -12,13 +12,12 @@ def get_arguments():
 def main():
     try:
         mode, file_path, passwd = get_arguments()
-        cryptor = FileCryptor()
         if not (mode == "crypt" or mode == "decrypt"):
             raise Exception("Mode must be crypt or decrypt")
         if mode == "crypt":
-            cryptor.encrypt(file_path, passwd)
+            fc.encrypt(file_path, passwd)
         if mode == "decrypt":
-            cryptor.decrypt(file_path, passwd)
+            fc.decrypt(file_path, passwd)
     except Exception as e:
         print(str(e))
 
